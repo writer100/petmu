@@ -15,8 +15,8 @@ public class Thumbnail extends freeBoard implements Serializable {
 	public Thumbnail() { }
 
 	public Thumbnail(int bno, int cateNo, String bwriterId, String bwriterNick, String btitle, String bcontent,
-			int bcount, String bfile, int likeCount, Date bdate, String status, ArrayList<Attachment> attachments) {
-		super(bno, cateNo, bwriterId, bwriterNick, btitle, bcontent, bcount, bfile, likeCount, bdate, status);
+			int bcount, String bfile, int likeCount, Date bdate, String status, int ccount, ArrayList<Attachment> attachments) {
+		super(bno, cateNo, bwriterId, bwriterNick, btitle, bcontent, bcount, bfile, likeCount, bdate, status, ccount);
 		this.attachments = attachments;
 	}
 

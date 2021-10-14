@@ -94,6 +94,7 @@ public class ThumbnailDAO {
 				tn.setlikeCount( rs.getInt("likeCount"));
 				tn.setBdate( rs.getDate("bdate"));
 				tn.setStatus( rs.getString("status"));
+				tn.setCcount( rs.getInt("ccount"));
 				
 				list.add(tn);
 			}   
@@ -536,6 +537,7 @@ public ArrayList<Thumbnail> selectTitleList(Connection con, int currentPage, int
 			tn.setlikeCount( rs.getInt("likeCount"));
 			tn.setBdate( rs.getDate("bdate"));	
 			tn.setStatus(rs.getString("status"));
+			
 			
 			list.add(tn);
 		}

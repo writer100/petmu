@@ -87,7 +87,8 @@ public class BoardDAO {
 				fb.setBfile( rs.getString("bfile"));
 				fb.setlikeCount( rs.getInt("likeCount"));
 				fb.setBdate( rs.getDate("bdate"));
-				fb.setStatus(rs.getString("status"));	
+				fb.setStatus(rs.getString("status"));
+				fb.setCcount( rs.getInt("ccount"));
 				
 				list.add(fb);
 			}
@@ -134,6 +135,7 @@ public class BoardDAO {
 				fb.setlikeCount( rs.getInt("likeCount"));
 				fb.setBdate( rs.getDate("bdate"));	
 				fb.setStatus(rs.getString("status"));
+				fb.setCcount( rs.getInt("ccount"));
 			}
 			
 		} catch (SQLException e) {

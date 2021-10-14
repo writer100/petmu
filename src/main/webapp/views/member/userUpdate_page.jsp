@@ -54,7 +54,7 @@
    <br><br>
 
 
-   <form action="/petmu/update.do" method="post" id="updateForm" style="text-align: center;">
+   <form action="/Petmu/update.do" method="post" id="updateForm" style="text-align: center;">
 
    <div style="display: table;  margin: auto;">
    <table align="center" style="width: 300px; padding-left: 42px;">

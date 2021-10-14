@@ -55,17 +55,17 @@ public class BoardUpdate extends HttpServlet {
 			request.setAttribute("cate", cateNo);
 			
 				switch(cateNo) {
-				case 3 : page = "selectList.bo?cate=3";
+				case 3 : page = request.getContextPath() + "/selectOne.bo?cate=3&bno=" + bno;
 						 break;
-				case 4 : page = "selectList.bo?cate=4";
+				case 4 : page = request.getContextPath() + "/selectOne.bo?cate=4&bno=" + bno;
 						 break;
-				case 5 : page = "selectList.bo?cate=5";
+				case 5 : page = request.getContextPath() + "/selectOne.bo?cate=5&bno=" + bno;
 				 		 break;
-				case 6 : page = "selectList.bo?cate=6";
+				case 6 : page = request.getContextPath() + "/selectOne.bo?cate=6&bno=" + bno;
 						 break;
-				case 7 : page = "selectList.bo?cate=7";
+				case 7 : page = request.getContextPath() + "/selectOne.bo?cate=7&bno=" + bno;
 				 		 break;
-				case 8 : page = "selectList.bo?cate=8";
+				case 8 : page = request.getContextPath() + "/selectOne.bo?cate=8&bno=" + bno;
 						 break;		 
 						 
 				}

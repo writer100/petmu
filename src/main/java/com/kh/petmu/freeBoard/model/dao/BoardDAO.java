@@ -430,6 +430,7 @@ public class BoardDAO {
 				fb.setlikeCount( rs.getInt("likeCount"));
 				fb.setBdate( rs.getDate("bdate"));	
 				fb.setStatus(rs.getString("status"));
+				fb.setCcount( rs.getInt("ccount"));
 				
 				list.add(fb);
 			}
@@ -477,6 +478,7 @@ public class BoardDAO {
 				fb.setlikeCount( rs.getInt("likeCount"));
 				fb.setBdate( rs.getDate("bdate"));	
 				fb.setStatus(rs.getString("status"));
+				fb.setCcount( rs.getInt("ccount"));
 				
 				list.add(fb);
 			}
@@ -524,6 +526,102 @@ public class BoardDAO {
 				fb.setlikeCount( rs.getInt("likeCount"));
 				fb.setBdate( rs.getDate("bdate"));	
 				fb.setStatus(rs.getString("status"));
+				fb.setCcount( rs.getInt("ccount"));
+				
+				list.add(fb);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(ps);
+		}
+		
+		return list;
+	}
+	
+	// 분류별(댓글수,추천수)로 조회
+	public ArrayList<freeBoard> selectListSortcmt(Connection con, int currentPage, int limit) {
+		ArrayList<freeBoard> list = new ArrayList<>();
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		String sql = prop.getProperty("selectListcmt");
+		
+		try {
+			ps = con.prepareStatement(sql);
+			
+			int startRow = (currentPage - 1) * limit + 1;
+			int endRow = startRow + limit - 1;
+			
+			ps.setInt(1, endRow);
+			ps.setInt(2, startRow);
+			
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				freeBoard fb = new freeBoard();
+				
+				fb.setBno( rs.getInt("bno"));
+				fb.setcateNo( rs.getInt("cate_No"));
+				fb.setbwriterId( rs.getString("bwriter_Id"));
+				fb.setbwriterNick( rs.getString("bwriter_Nick"));
+				fb.setbtitle( rs.getString("btitle"));
+				fb.setBcontent( rs.getString("bcontent"));
+				fb.setBcount( rs.getInt("bcount"));
+				fb.setBfile( rs.getString("bfile"));
+				fb.setlikeCount( rs.getInt("likeCount"));
+				fb.setBdate( rs.getDate("bdate"));	
+				fb.setStatus(rs.getString("status"));
+				fb.setCcount( rs.getInt("ccount"));
+				
+				list.add(fb);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(ps);
+		}
+		
+		return list;
+	}
+
+	public ArrayList<freeBoard> selectListSortlike(Connection con, int currentPage, int limit) {
+		ArrayList<freeBoard> list = new ArrayList<>();
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		String sql = prop.getProperty("selectListSortlike");
+		
+		try {
+			ps = con.prepareStatement(sql);
+			
+			int startRow = (currentPage - 1) * limit + 1;
+			int endRow = startRow + limit - 1;
+			
+			ps.setInt(1, endRow);
+			ps.setInt(2, startRow);
+			
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				freeBoard fb = new freeBoard();
+				
+				fb.setBno( rs.getInt("bno"));
+				fb.setcateNo( rs.getInt("cate_No"));
+				fb.setbwriterId( rs.getString("bwriter_Id"));
+				fb.setbwriterNick( rs.getString("bwriter_Nick"));
+				fb.setbtitle( rs.getString("btitle"));
+				fb.setBcontent( rs.getString("bcontent"));
+				fb.setBcount( rs.getInt("bcount"));
+				fb.setBfile( rs.getString("bfile"));
+				fb.setlikeCount( rs.getInt("likeCount"));
+				fb.setBdate( rs.getDate("bdate"));	
+				fb.setStatus(rs.getString("status"));
+				fb.setCcount( rs.getInt("ccount"));
 				
 				list.add(fb);
 			}
@@ -544,14 +642,5 @@ public class BoardDAO {
 
 
 }
-
-
-
-
-
-
-
-
-
 
 

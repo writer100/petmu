@@ -53,6 +53,12 @@ Member m = (Member) session.getAttribute("member");
 			<div class="menu" onclick="thumb();">나의 댕냥 자랑</div>
 		</nav>
 	</div>
+
+	<div style="position: fixed; bottom: 15px; right: 10px;">
+		<a href="#top"> <img title="위로가기"
+			src="https://img.icons8.com/ios-glyphs/40/000000/double-up--v1.png" /></a>
+	</div>
+
 	<%
 	if (m != null) {
 	%>

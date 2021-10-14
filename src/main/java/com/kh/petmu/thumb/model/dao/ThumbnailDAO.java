@@ -537,6 +537,7 @@ public ArrayList<Thumbnail> selectTitleList(Connection con, int currentPage, int
 			tn.setlikeCount( rs.getInt("likeCount"));
 			tn.setBdate( rs.getDate("bdate"));	
 			tn.setStatus(rs.getString("status"));
+			tn.setCcount( rs.getInt("ccount"));
 			
 			
 			list.add(tn);
@@ -585,6 +586,7 @@ public ArrayList<Thumbnail> selectWriterIdList(Connection con, int currentPage, 
 			tn.setlikeCount( rs.getInt("likeCount"));
 			tn.setBdate( rs.getDate("bdate"));	
 			tn.setStatus(rs.getString("status"));
+			tn.setCcount( rs.getInt("ccount"));
 			
 			list.add(tn);
 		}
@@ -632,6 +634,100 @@ public ArrayList<Thumbnail> selectWriterNickList(Connection con, int currentPage
 			tn.setlikeCount( rs.getInt("likeCount"));
 			tn.setBdate( rs.getDate("bdate"));	
 			tn.setStatus(rs.getString("status"));
+			
+			list.add(tn);
+		}
+		
+	} catch (SQLException e) {
+		e.printStackTrace();
+	} finally {
+		close(rs);
+		close(ps);
+	}
+	
+	return list;
+}
+
+public ArrayList<Thumbnail> selectListSortcmt(Connection con, int currentPage, int limit) {
+	ArrayList<Thumbnail> list = new ArrayList<>();
+	PreparedStatement ps = null;
+	ResultSet rs = null;
+	
+	String sql = prop.getProperty("selectListcmt");
+	
+	try {
+		ps = con.prepareStatement(sql);
+		
+		int startRow = (currentPage - 1) * limit + 1;
+		int endRow = startRow + limit - 1;
+		
+		ps.setInt(1, endRow);
+		ps.setInt(2, startRow);
+		
+		rs = ps.executeQuery();
+		
+		while(rs.next()) {
+			Thumbnail tn = new Thumbnail();
+			
+			tn.setBno( rs.getInt("bno"));
+			tn.setcateNo( rs.getInt("cate_No"));
+			tn.setbwriterId( rs.getString("bwriter_Id"));
+			tn.setbwriterNick( rs.getString("bwriter_Nick"));
+			tn.setbtitle( rs.getString("btitle"));
+			tn.setBcontent( rs.getString("bcontent"));
+			tn.setBcount( rs.getInt("bcount"));
+			tn.setBfile( rs.getString("changename"));
+			tn.setlikeCount( rs.getInt("likeCount"));
+			tn.setBdate( rs.getDate("bdate"));	
+			tn.setStatus(rs.getString("status"));
+			tn.setCcount( rs.getInt("ccount"));
+			
+			list.add(tn);
+		}
+		
+	} catch (SQLException e) {
+		e.printStackTrace();
+	} finally {
+		close(rs);
+		close(ps);
+	}
+	
+	return list;
+}
+
+public ArrayList<Thumbnail> selectListSortlike(Connection con, int currentPage, int limit) {
+	ArrayList<Thumbnail> list = new ArrayList<>();
+	PreparedStatement ps = null;
+	ResultSet rs = null;
+	
+	String sql = prop.getProperty("selectListSortlike");
+	
+	try {
+		ps = con.prepareStatement(sql);
+		
+		int startRow = (currentPage - 1) * limit + 1;
+		int endRow = startRow + limit - 1;
+		
+		ps.setInt(1, endRow);
+		ps.setInt(2, startRow);
+		
+		rs = ps.executeQuery();
+		
+		while(rs.next()) {
+			Thumbnail tn = new Thumbnail();
+			
+			tn.setBno( rs.getInt("bno"));
+			tn.setcateNo( rs.getInt("cate_No"));
+			tn.setbwriterId( rs.getString("bwriter_Id"));
+			tn.setbwriterNick( rs.getString("bwriter_Nick"));
+			tn.setbtitle( rs.getString("btitle"));
+			tn.setBcontent( rs.getString("bcontent"));
+			tn.setBcount( rs.getInt("bcount"));
+			tn.setBfile( rs.getString("changename"));
+			tn.setlikeCount( rs.getInt("likeCount"));
+			tn.setBdate( rs.getDate("bdate"));	
+			tn.setStatus(rs.getString("status"));
+			tn.setCcount( rs.getInt("ccount"));
 			
 			list.add(tn);
 		}

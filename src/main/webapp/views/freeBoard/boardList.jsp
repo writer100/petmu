@@ -37,11 +37,19 @@
 		<br>
 		<div id="Bhead">
 		<i id="cateicon" class="far fa-edit"></i>
-		<label class="category">자유게시판</label>	
+		<a class="category" href='<%=request.getContextPath()%>/selectList.fb'>자유게시판</a>
 		</div>
-		
-		<br>
-		
+
+		<div align="right" style="width: 1340px; padding-bottom: 5px;">
+			<select name="sortList" id="sortList">
+				<option value="">:::정렬:::</option>
+				<option ${(param.sort == "new") ? "selected" : " " } value="new">최신순</option>
+				<option ${(param.sort == "cmt") ? "selected" : " " } value="cmt">댓글순</option>
+				<option ${(param.sort == "like") ? "selected" : " " } value="like">추천순</option>
+			</select>
+		</div>
+
+
 		<div class="tableArea">
 			<table id="listArea" >
 				<thead>
@@ -124,10 +132,11 @@
 		<div id="searchArea">
 			<div id="searchFrm">
 				<select id="searchTarget" name="searchTarget">
-				<%-- 삼항연산자 사용
+				<%-- 삼항연산자, selected 사용
 						옵션(searchTarget)에서 value(title, writerId, writerNick)를 
-						선택한게 맞다면 선택한 옵션이 남아있게 함.
-						검색버튼을 누르고 페이지가 바뀌어도 선택한 옵션이 그대로 선택되어 있음.
+						선택한게 맞다면 검색버튼을 누르고 화면이 바뀌어도 
+						선택한 옵션이 그대로 남아있음.
+						- 아래 input value="#{param.keyword}" 검색창에서 검색한 키워드가 검색 후에도 남아있음
 				 --%>
 					<option ${(param.searchTarget == "title") ? "selected" : " " } value="title">제목</option>
 					<option ${(param.searchTarget == "writerId") ? "selected" : " " } value="writerId">아이디</option>
@@ -147,38 +156,54 @@
 
 </body>
 
-<script>
-// 게시글 리스트 마우스이벤트, 작성하기 버튼 함수
-$(function(){
-	$('#listArea td').mouseenter(function(){
-		$(this).parent().css({"background" : "#f2f2f2", "cursor" : "pointer"});
-	}).mouseout(function(){
-		$(this).parent().css({"background" : "white"});
-	}).click(function(){
-		var bno = $(this).parent().find('td:first').html();
-		location.href = "<%= request.getContextPath() %>/selectOne.fb?bno=" + bno;
+	<script>
+	// 게시글 리스트 마우스이벤트, 작성하기 버튼 함수
+	$(function(){
+		$('#listArea td').mouseenter(function(){
+			$(this).parent().css({"background" : "#f2f2f2", "cursor" : "pointer"});
+		}).mouseout(function(){
+			$(this).parent().css({"background" : "white"});
+		}).click(function(){
+			var bno = $(this).parent().find('td:first').html();
+			location.href = "<%= request.getContextPath() %>/selectOne.fb?bno=" + bno;
+		});
 	});
-});
-/* -- 질문했었던 부분
-	위에 테이블 tr>td 안에 input type="hidden"으로 bno를 받아오면 
-	var bno = $(this).parent().find('input').val();
-	내 코드에선 input type="hidden"을 안쓰고 tr>td 안에서 바로 bno값을 받았기때문에
-	var bno = $(this).parent().find('td:first').html(); 라고 써서
-	부모인 tr 밑에 첫번째 td 값을 가져오는 것
-*/
-
-// 검색 기능
-function search(){
-	var target = $('#searchTarget').val();
-	var keyword = $('#bsearch').val();
+	/* -- 질문했었던 부분
+		위에 테이블 tr>td 안에 input type="hidden"으로 bno를 받아오면 
+		var bno = $(this).parent().find('input').val();
+		내 코드에선 input type="hidden"을 안쓰고 tr>td 안에서 바로 bno값을 받았기때문에
+		var bno = $(this).parent().find('td:first').html(); 라고 써서
+		부모인 tr 밑에 첫번째 td 값을 가져오는 것
+	*/
 	
-	console.log(keyword);
-	
-	if(!keyword){
-		alert("검색어를 입력해주세요.")
-	} else {
-		location.href = "<%= request.getContextPath()%>/selectList.fb?searchTarget=" + target + "&keyword=" + keyword;
+	// 검색 기능
+	function search(){
+		var target = $('#searchTarget').val();
+		var keyword = $('#bsearch').val();
+		
+		console.log(keyword);
+		
+		if(!keyword){
+			alert("검색어를 입력해주세요.")
+		} else {
+			location.href = "<%= request.getContextPath()%>/selectList.fb?searchTarget=" + target + "&keyword=" + keyword;
+		}
 	}
-}
+		
+	// 게시글 정렬
+	$('#sortList').on('change', function(){
+		var sortL = $(this).val();
+		
+		switch(sortL){
+		
+		case "new" : location.href = "<%= request.getContextPath()%>/selectList.fb";
+					  break;
+		case "cmt" : location.href = "<%= request.getContextPath()%>/selectSortList.fb?sort=" + sortL;
+					  break;
+		case "like" : location.href = "<%= request.getContextPath()%>/selectSortList.fb?&sort=" + sortL;
+		   			  break;
+		}
+		
+	});
 </script>
 </html>

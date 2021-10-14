@@ -29,6 +29,7 @@
 	margin-top: -30px;
 	font-size: 30px;
 	color: orange;
+	text-decoration: none;
 }
 
 .tableArea {
@@ -130,4 +131,8 @@ select {
 	border: 0;
 	font-weight: bold;
 	color: orange;
+}
+
+#searchBtn:hover {
+	cursor : pointer;
 }

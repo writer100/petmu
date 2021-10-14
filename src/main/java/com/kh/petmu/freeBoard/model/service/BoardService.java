@@ -194,6 +194,26 @@ public class BoardService {
 		return list;
 	}
 
+	public ArrayList<freeBoard> selectListSortcmt(int currentPage, int limit) {
+		con = getConnection();
+		
+		ArrayList<freeBoard> list = dao.selectListSortcmt(con, currentPage, limit);
+
+		close(con);
+		
+		return list;
+	}
+
+	public ArrayList<freeBoard> selectListSortlike(int currentPage, int limit) {
+		con = getConnection();
+		
+		ArrayList<freeBoard> list = dao.selectListSortlike(con, currentPage, limit);
+
+		close(con);
+		
+		return list;
+	}
+
 
 }
 

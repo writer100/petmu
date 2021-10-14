@@ -4,7 +4,8 @@
 <html>
 <head>
     <title>PETMU : 이용약관</title>
-    <link rel="petmu icon" href="../resources/petmu.ico">
+    <!-- 타이틀 로고 -->
+	<link rel="shortcut icon" type="image/x-icon" href="<%= request.getContextPath()%>/resources/images/petmu.ico" />etmu.ico">
 </head>
 <body>
     <h2 style='font-size:25px;'>Petmu 개인정보처리방침</h2>

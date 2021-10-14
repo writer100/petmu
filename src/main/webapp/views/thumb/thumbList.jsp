@@ -36,13 +36,22 @@
 		<br>
 		<div id="Bhead">
 		<i id="cateIcon" class="far fa-images"></i>
-		<label class="category"> 나의 댕냥 자랑</label>
+		<a class="category" href='<%= request.getContextPath() %>/selectList.tn'>나의 댕냥 자랑</a>
 		<p id="photoInfo">
 			반려동물의 모습을 사진으로 자랑하세요!
 		</p>
 		</div>
+		
+		<div align="right" style="width: 1340px; padding-bottom: 5px;">
+			<select name="sortList" id="sortList">
+				<option value="">:::정렬:::</option>
+				<option ${(param.sort == "new") ? "selected" : " " } value="new">최신순</option>
+				<option ${(param.sort == "cmt") ? "selected" : " " } value="cmt">댓글순</option>
+				<option ${(param.sort == "like") ? "selected" : " " } value="like">추천순</option>
+			</select>
+		</div>
+		
 		<hr />
-		<br />
 		<div id="thumbnailArea">
 			<% for(Thumbnail thumb : list) { %>
 				<div class="thumb-list" align="center">
@@ -57,9 +66,9 @@
 
 						<li><%= thumb.getbwriterNick() %> (<%= thumb.getbwriterId() %>)</li>
 						<li>
-							<i style="color:#666" class="far fa-eye"></i> <%= thumb.getBcount() %>&nbsp;&nbsp;
-							<i style="color:#f00;" class="fas fa-heart"></i> <%= thumb.getlikeCount() %>&nbsp;&nbsp;
-							<i style="color:#ffdf80;" class="far fa-comment-dots"></i> <%= thumb.getCcount() %>	
+							<i style="color:darkgrey" class="far fa-eye"></i> <%= thumb.getBcount() %>&nbsp;&nbsp;&nbsp;
+							<i style="color:orange;" class="fas fa-thumbs-up"></i> <%= thumb.getlikeCount() %>&nbsp;&nbsp;&nbsp;
+							<i style="color:darkgrey;" class="far fa-comment-dots"></i> <%= thumb.getCcount() %>	
 						</li>
 
 					</ul>
@@ -155,5 +164,21 @@ function search(){
 		location.href = "<%= request.getContextPath()%>/selectList.tn?searchTarget=" + target + "&keyword=" + keyword;
 	}
 }
+
+// 게시글 정렬
+$('#sortList').on('change', function(){
+	var sortL = $(this).val();
+	
+	switch(sortL){
+	
+	case "new" : location.href = "<%= request.getContextPath()%>/selectList.tn";
+				 break;
+	case "cmt" : location.href = "<%= request.getContextPath()%>/selectSortList.tn?sort=" + sortL;
+				   break;
+	case "like" : location.href = "<%= request.getContextPath()%>/selectSortList.tn?&sort=" + sortL;
+	   			   break;
+	}
+	
+});
 </script>
 </html>

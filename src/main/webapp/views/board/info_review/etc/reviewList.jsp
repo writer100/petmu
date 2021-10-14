@@ -46,8 +46,17 @@
            		<i class="far fa-edit"></i>
                 <label style="color : orange;"> 기타 장소 이용 후기</label>
             </div>
-    
-            <div class="tableArea">
+
+			<div align="right" style="width: 1162px; padding-bottom: 5px;">
+				<select name="sortList" id="sortList">
+					<option value="">:::정렬:::</option>
+					<option ${(param.sort == "new") ? "selected" : " " } value="new">최신순</option>
+					<option ${(param.sort == "cmt") ? "selected" : " " } value="cmt">댓글순</option>
+					<option ${(param.sort == "like") ? "selected" : " " } value="like">추천순</option>
+				</select>
+			</div>
+
+			<div class="tableArea">
                 <table id="listArea">
                     <thead>
                         <tr>
@@ -161,6 +170,22 @@
     			location.href = "<%= request.getContextPath()%>/selectList.bo?cate=8&searchTarget=" + target + "&keyword=" + keyword; <%--cate check --%>
     		}
     	}
+    	
+    	// 게시글 정렬
+    	$('#sortList').on('change', function(){
+    		var sortL = $(this).val();
+    		
+    		switch(sortL){
+    		
+    		case "new" : location.href = "<%= request.getContextPath()%>/selectList.bo?cate=8";
+    					 break;
+    		case "like" : location.href = "<%= request.getContextPath()%>/selectSortList.bo?cate=8&sort=" + sortL;
+						   break;
+    		case "cmt" : location.href = "<%= request.getContextPath()%>/selectSortList.bo?cate=8&sort=" + sortL;
+			   			   break;
+    		}
+    		
+    	});
     </script>
 </html>
 

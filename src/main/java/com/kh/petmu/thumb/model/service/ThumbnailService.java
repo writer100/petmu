@@ -257,6 +257,26 @@ public ArrayList<Thumbnail> selectWriterNickList(int currentPage, int limit, Str
 	return list;
 }
 
+public ArrayList<Thumbnail> selectListSortcmt(int currentPage, int limit) {
+	con = getConnection();
+	
+	ArrayList<Thumbnail> list = dao.selectListSortcmt(con, currentPage, limit);
+
+	close(con);
+	
+	return list;
+}
+
+public ArrayList<Thumbnail> selectListSortlike(int currentPage, int limit) {
+	con = getConnection();
+	
+	ArrayList<Thumbnail> list = dao.selectListSortlike(con, currentPage, limit);
+
+	close(con);
+	
+	return list;
+}
+
 
 
 }

@@ -16,7 +16,10 @@
                height: 50px;
                border-radius: 10px;
                border-color: gray;
+}
 
+#loginBtn, #memberJoinBtn:hover {
+	cursor : pointer;
 }
 
    </style>
@@ -27,7 +30,7 @@
     <br><hr><br><br>
 
 
-    <form action="/petmu/login.do"  method="post" id="loginForm" style="text-align: center; ">
+    <form action="/Petmu/login.do"  method="post" id="loginForm" style="text-align: center; ">
     <br>
     <label  class="far fa-id-card" style="font-size: 35px; color: coral;  position: relative; top: 4px; font-weight: 900;" >&nbsp;</label>
     <input class="txtin" type="text" name="userId" placeholder=" ID" style="font-size: 25px; margin-right: 40px;">

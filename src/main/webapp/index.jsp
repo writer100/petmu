@@ -7,10 +7,13 @@
 <head>
 <meta charset="UTF-8">
 <title>PETMU</title>
-<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/petcss.css">
-<link rel="stylesheet" href="<%= request.getContextPath()%>/resources/css/header.css" />
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/resources/css/petcss.css">
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/resources/css/header.css" />
 <!-- 타이틀 로고 -->
-<link rel="shortcut icon" type="image/x-icon" href="<%= request.getContextPath() %>/resources/images/petmu.ico" /> 
+<link rel="shortcut icon" type="image/x-icon"
+	href="<%=request.getContextPath()%>/resources/images/petmu.ico" />
 </head>
 
 
@@ -21,92 +24,110 @@
 	<div id="best">
 		<div class="bestboard">
 			<img class="bestphoto"
-				src="<%=request.getContextPath()%>/resources/images/dog.jpg">
+				src="<%=request.getContextPath()%>/resources/images/banner1.jpg">
 		</div>
 		<div class="bestboard">
 			<img class="bestphoto"
-				src="<%=request.getContextPath()%>/resources/images/dogcat.jpg">
+				src="<%=request.getContextPath()%>/resources/images/banner2.jpg">
 		</div>
 	</div>
 
 	<h1 align="center">FOCUS ON</h1>
 
 	<div class="container">
-		<div class="item1">
-			<img id="modal_btn1"
-				src="<%=request.getContextPath()%>/resources/images/know1.png">
+		<!-- 첫 번째 Modal을 여는 클래스 -->
+		<div class="btn">
+			<img src="<%=request.getContextPath()%>/resources/images/know1.png">
 		</div>
-		<div class="item2">
-			<img id="modal_btn2"
-				src="<%=request.getContextPath()%>/resources/images/know2.png">
-		</div>
-		<div class="item3">
-			<img id="modal_btn3"
-				src="<%=request.getContextPath()%>/resources/images/know3.png">
-		</div>
-	</div>
-	<div class="black_bg"></div>
-	<!-- 모달창 띄워질때 뒤 배경 -->
-	<div class="modal_wrap">
-		<div class="modal_close">
-			<a href="#">close</a>
-		</div>
-		<div>
-			<img
-				src="<%=request.getContextPath()%>/resources/images/introImg2.png">
-		</div>
-	</div>
 
-	<div class="modal_wrap">
-		<div class="modal_close">
-			<a href="#">close</a>
-		</div>
-		<div>
-			<img
-				src="<%=request.getContextPath()%>/resources/images/introImg2.png">
-		</div>
-	</div>
+		<!-- 첫 번째 Modal -->
+		<div class="modal">
 
-	<div class="modal_wrap">
-		<div class="modal_close">
-			<a href="#">close</a>
+			<!-- 첫 번째 Modal의 내용 -->
+			<div class="modal-content">
+				<div class="close">&times;</div>
+				<img src="<%=request.getContextPath()%>/resources/images/modal1.png">
+			</div>
 		</div>
-		<div>
-			<img
-				src="<%=request.getContextPath()%>/resources/images/introImg2.png">
+
+		<!-- 두 번째 Modal을 여는 클래스 -->
+		<div class="btn">
+			<img src="<%=request.getContextPath()%>/resources/images/know2.png">
+		</div>
+
+		<!-- 두 번째 Modal -->
+		<div class="modal">
+
+			<!-- 두 번째 Modal의 내용 -->
+			<div class="modal-content">
+				<div class="close">&times;</div>
+				<img src="<%=request.getContextPath()%>/resources/images/modal2.png">
+			</div>
+		</div>
+
+		<!-- 세 번째 Modal을 여는 클래스 -->
+		<div class="btn">
+			<img src="<%=request.getContextPath()%>/resources/images/know3.png">
+		</div>
+
+		<!-- 세 번째 Modal -->
+		<div class="modal">
+
+			<!-- 세 번째 Modal의 내용 -->
+			<div class="modal-content">
+				<div class="close">&times;</div>
+				<img src="<%=request.getContextPath()%>/resources/images/modal3.png">
+			</div>
 		</div>
 	</div>
 </body>
 <script>
-	window.onload = function() {
+	// Modal을 가져옵니다.
+	var modals = document.getElementsByClassName("modal");
+	// Modal을 띄우는 클래스 이름을 가져옵니다.
+	var btns = document.getElementsByClassName("btn");
+	// Modal을 닫는 close 클래스를 가져옵니다.
+	var spanes = document.getElementsByClassName("close");
+	var funcs = [];
 
-		function onClick() {
-			document.querySelector('.modal_wrap').style.display = 'block';
-			document.querySelector('.black_bg').style.display = 'block';
+	// Modal을 띄우고 닫는 클릭 이벤트를 정의한 함수
+	function Modal(num) {
+		return function() {
+			// 해당 클래스의 내용을 클릭하면 Modal을 띄웁니다.
+			btns[num].onclick = function() {
+				modals[num].style.display = "block";
+				console.log(num);
+			};
+
+			//  <span> 태그(X 버튼)를 클릭하면 Modal이 닫습니다.
+			spanes[num].onclick = function() {
+				modals[num].style.display = "none";
+			};
+		};
+	}
+
+	// 원하는 Modal 수만큼 Modal 함수를 호출해서 funcs 함수에 정의합니다.
+	for (var i = 0; i < btns.length; i++) {
+		funcs[i] = Modal(i);
+	}
+
+	// 원하는 Modal 수만큼 funcs 함수를 호출합니다.
+	for (var j = 0; j < btns.length; j++) {
+		funcs[j]();
+	}
+
+	// Modal 영역 밖을 클릭하면 Modal을 닫습니다.
+	window.onclick = function(event) {
+		if (event.target.className == "modal") {
+			event.target.style.display = "none";
 		}
-		function offClick() {
-			document.querySelector('.modal_wrap').style.display = 'none';
-			document.querySelector('.black_bg').style.display = 'none';
-		}
-
-		document.getElementById('modal_btn1').addEventListener('click', onClick);
-		document.querySelector('.modal_close').addEventListener('click',
-				offClick);
-		
-		document.getElementById('modal_btn2').addEventListener('click', onClick);
-		document.querySelector('.modal_close').addEventListener('click',
-				offClick);
-		
-		document.getElementById('modal_btn3').addEventListener('click', onClick);
-		document.querySelector('.modal_close').addEventListener('click',
-				offClick);
-
 	};
-
-	
 </script>
 
-<br><br><br><br>
+<br>
+<br>
+<br>
+<br>
 
 <%@ include file="/views/common/footer.jsp"%>
 

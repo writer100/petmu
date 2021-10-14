@@ -44,6 +44,10 @@ padding-top: 20px;
 
 }
 
+#pwSerch:hover {
+	cursor : pointer;
+}
+
 .input{
 
     width: 550px;
@@ -68,6 +72,10 @@ padding-top: 20px;
 
 }
 
+#changePw:hover {
+	cursor : pointer;
+}
+
 
 
    </style>
@@ -75,7 +83,7 @@ padding-top: 20px;
 <body  style="background-color:#f5f6f7;">
     <h2 align="center" style="margin-top: 150px;"><a href="../../index.jsp"> <img width="250" height="100" src="<%= request.getContextPath()%>/resources/images/petmu.png"alt="펫뮤" > </a><br><br> ID / PW 찾기 </h2>
     <br><hr><br>
-<form action="/petmu/changepw.do"  method="post" id="changePwForm" style="text-align: center; ">
+<form action="/Petmu/changepw.do"  method="post" id="changePwForm" style="text-align: center; ">
 
     <br><br><br>
     <span align="center" class="select">

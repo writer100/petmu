@@ -31,8 +31,11 @@ padding-top: 20px;
 #idSerch{
     background-color: black;
     color: white;
- 
 
+}
+
+#idSerch:hover {
+	cursor : pointer;
 }
 
 #pwSerch{
@@ -67,6 +70,10 @@ padding-top: 20px;
 
 }
 
+#findId:hover {
+	cursor : pointer;
+}
+
 
 
    </style>
@@ -85,7 +92,7 @@ padding-top: 20px;
 
     </span>
 <br><br>
-<form action="/petmu/idserch.do"  method="post" id="idSerchForm" style="text-align: center; ">
+<form action="/Petmu/idserch.do"  method="post" id="idSerchForm" style="text-align: center; ">
     <h2 style="color: gray; font-weight: 500; font-size: 20px;">회원 가입 시 작성한 이름과 E-Mail을 입력해주세요.</h2> 
 
     <input type="text" id="userName" name="userName" class="input" placeholder=" 이름" > <br><br>
@@ -121,7 +128,7 @@ padding-top: 20px;
 	 $.ajax({
 
 		 type: 'post',
-		 url : '/petmu/idserch.do',
+		 url : '/Petmu/idserch.do',
 		 data : params,
 		 success : function( data ) {
 			 

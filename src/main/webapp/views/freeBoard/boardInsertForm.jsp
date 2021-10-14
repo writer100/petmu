@@ -41,7 +41,7 @@
                 	  <input type="hidden" name="bwriterId" value="<%= m.getUserId() %>" /> <%--m.getid --%>
                 	  <input type="hidden" name="bwriterNick" value="<%= m.getNickname() %>" /> <%--m.getNickname --%>
 				      <input type="text" id="btitle" name="btitle" placeholder="제목을 입력해주세요" 
-				      			required maxlength="30"><br>
+				      			required maxlength="85"><br>
 
 				      <br>
 

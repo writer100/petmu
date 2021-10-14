@@ -89,7 +89,7 @@
 
 
 
-          <form action="/petmu/insert.do" method="post" id="joinForm" style="text-align: center; ">
+          <form action="<%= request.getContextPath()%>/insert.do" method="post" id="joinForm" style="text-align: center; ">
 
 
 
@@ -244,15 +244,12 @@
 	});
 	
 
-
-     
-     
-	 
+ 
      $('#idCheck').on('click', function(){
 		
     	 var id = $("#userId").val();
     	 $.ajax({
-			 url : '/petmu/idcheck.do',
+			 url : '<%= request.getContextPath()%>/idcheck.do',
 			 type: 'post',
 			 data : { userId : $('#userId').val() },
 			 success : function( data ) {
@@ -273,7 +270,7 @@
      
      $('#nicknameCheck').on('click', function(){
 		 $.ajax({
-			 url : '/PetMu/nicknamecheck.do',
+			 url : '<%= request.getContextPath()%>/nicknamecheck.do',
 			 type: 'post',
 			 data : { nickname : $('#nickname').val() },
 			 success : function( data ) {
@@ -294,7 +291,7 @@
      
      $('#emailCheck').on('click', function(){
 		 $.ajax({
-			 url : '/PetMu/emailcheck.do',
+			 url : '<%= request.getContextPath()%>/emailcheck.do',
 			 type: 'post',
 			 data : { email : $('#email').val() },
 			 success : function( data ) {

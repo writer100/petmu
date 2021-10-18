@@ -42,4 +42,7 @@
   - 사진게시판
 
 ## 구현기능 및 기능설명
+* 홈페이지 인트로 
+![intro](https://user-images.githubusercontent.com/91815909/137675876-0021a8a3-ebbd-4add-b954-ebc6c4e70c26.gif)
 
+* 자유게시판

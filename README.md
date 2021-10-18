@@ -45,7 +45,23 @@
 * 홈페이지 인트로 
 ![intro](https://user-images.githubusercontent.com/91815909/137675876-0021a8a3-ebbd-4add-b954-ebc6c4e70c26.gif)
 
-* 자유게시판
+* 자유게시판 목록
 ![freeBoard1](https://user-images.githubusercontent.com/91815909/137676819-22fe0d97-b5b6-4947-a13f-9cc9dac40f96.png)
 
+![freeBoard2](https://user-images.githubusercontent.com/91815909/137678715-12e54557-ecfe-4c06-9036-4498bc3b015d.png)
+**게시판 내 검색 기능 <br>
+select, option 태그를 이용해서 검색창을 만들고 js를 이용해 검색 option과 input의 value 값을 servlet으로 전달 <br>
+제목,아이디,닉네임으로 조회했을 때 맞는 게시글을 조회하는 쿼리문을 이용 <br>
+삼항연산자와 selected를 이용해 검색 후 옵션값이 초기화되지않게 함**
+```
+<select id="searchTarget" name="searchTarget">
+	<option ${(param.searchTarget == "title") ? "selected" : " " } value="title">제목</option>
+	<option ${(param.searchTarget == "writerId") ? "selected" : " " } value="writerId">아이디</option>
+	<option ${(param.searchTarget == "writerNick") ? "selected" : " " } value="writerNick">닉네임</option>
+</select> &nbsp; 
+	<input id="bsearch" type="text" name="bsearch" value="${param.keyword}"
+				placeholder="검색어를 입력해주세요" /> &nbsp; 
+	<input id="searchBtn" type="button" value="검색" onclick="search();" />
+```
+* 자유게시판 CRUD
 ![게시판crud](https://user-images.githubusercontent.com/91815909/137678379-728906df-f566-4d4d-a617-d0a110021a77.gif)

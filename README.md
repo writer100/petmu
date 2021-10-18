@@ -123,3 +123,53 @@ $('#sortList').on('change', function(){
 		
 });
 ```
+
+* 사진게시판 목록
+![gallery](https://user-images.githubusercontent.com/91815909/137687384-61955530-ec50-45db-b7a8-5dad2d411b1c.png)<br>
+
+![gallery_crud](https://user-images.githubusercontent.com/91815909/137687405-cc02283d-1886-44f7-bea7-466a16f95c0d.gif)
+**작성하기 페이지에서 사진 미리보기**
+```
+<script>
+$(function(){
+	$('#titleImgArea').click(function(){
+		$('#thumbnailImg1').click();
+	});
+		
+	$('#contentImgArea1').click(function(){
+		$('#thumbnailImg2').click();
+	});
+		
+	$('#contentImgArea2').click(function(){
+		$('#thumbnailImg3').click();
+	});
+		
+	$('#contentImgArea3').click(function(){
+		$('#thumbnailImg4').click();
+	});
+		
+	$('#fileArea').hide();
+})
+	
+function loadImg(img, num){
+	if(img.files && img.files[0]) {
+		var reader = new FileReader();
+		reader.onload = function(e){
+				
+			switch(num){
+			case 1 : $('#titleImg').attr('src', e.target.result);
+				break;
+			case 2 : $('#contentImg1').attr('src', e.target.result);
+				break;
+			case 3 : $('#contentImg2').attr('src', e.target.result);
+				break;
+			case 4 : $('#contentImg3').attr('src', e.target.result);
+				break;
+			}
+		}
+			
+		reader.readAsDataURL(img.files[0]);
+	}	
+}
+</script>
+```

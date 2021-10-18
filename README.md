@@ -47,3 +47,5 @@
 
 * 자유게시판
 ![freeBoard1](https://user-images.githubusercontent.com/91815909/137676819-22fe0d97-b5b6-4947-a13f-9cc9dac40f96.png)
+
+![게시판crud](https://user-images.githubusercontent.com/91815909/137678379-728906df-f566-4d4d-a617-d0a110021a77.gif)

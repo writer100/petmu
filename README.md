@@ -94,3 +94,32 @@ String filename = mre.getFilesystemName("bfile");
 		
 freeBoard fb = new freeBoard(bwriterId, bwriterNick, btitle, bcontent, filename);
 ```
+
+* 게시글 정렬<br>
+![recently](https://user-images.githubusercontent.com/91815909/137684100-fb05b941-ae27-4381-9707-f9e7f4b6ecff.png)
+![cmt](https://user-images.githubusercontent.com/91815909/137684096-8f753e61-192f-46ed-80f3-85de27d37055.png)
+![recommend](https://user-images.githubusercontent.com/91815909/137684102-73b103fa-8027-485c-b9a2-034e47428e6f.png)
+```
+<select name="sortList" id="sortList">
+	<option value="">:::정렬:::</option>
+	<option value="new">최신순</option>
+	<option value="cmt">댓글순</option>
+	<option value="like">추천순</option>
+</select>
+```
+```
+$('#sortList').on('change', function(){
+	var sortL = $(this).val();
+		
+	switch(sortL){
+		
+	case "new" : location.href = "<%= request.getContextPath()%>/selectList.fb";
+		      break;
+	case "cmt" : location.href = "<%= request.getContextPath()%>/selectSortList.fb?sort=" + sortL;
+		      break;
+	case "like" : location.href = "<%= request.getContextPath()%>/selectSortList.fb?&sort=" + sortL;
+		      break;
+	}
+		
+});
+```

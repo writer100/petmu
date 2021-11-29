@@ -1,6 +1,6 @@
 # JSP SemiProject 'Petmu'
 
-## [최종보고서 링크] <!-- 추후 링크 첨부 -->
+## [최종보고서 링크](report/JSP_Project_Petmu.pdf)
 * 프로젝트 명 : 펫뮤(Petmu)
 
 * 프로젝트 기간 : 2021-10-05 ~ 2021-10-15
